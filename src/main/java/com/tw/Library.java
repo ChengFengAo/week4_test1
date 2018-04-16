@@ -35,14 +35,14 @@ public class Library {
 
     public Boolean addStudent(String tmp) {          //添加学生信息
         Boolean result;
-       // String regx = "[\\u4e00-\\u9fa5]+,[0-9]+(,[\\u4e00-\\u9fa5]+:[1-9][0-9]){4}"; //正则
+        //String regx = "[\\u4e00-\\u9fa5]+,[0-9]+(,[\\u4e00-\\u9fa5]+:[1-9][0-9]){4}"; //正则
         String regx = "[\\u4e00-\\u9fa5]+,[0-9]+,数学:[1-9][0-9],语文:[1-9][0-9],英语:[1-9][0-9],编程:[1-9][0-9]"; //正则
         Pattern p = Pattern.compile(regx);
         Matcher m = p.matcher(tmp);
         if (m.matches()) {           //输入匹配则提取信息，创建学生类，保存数据
             String name;
             int id = 0, math, chinese, english, coding;
-            String[] pname = tmp.split(":");
+            String[] pname = tmp.split(",");
             name = pname[0];
             id = Integer.parseInt(pname[1]);
             math = getGrade(pname[2]);
